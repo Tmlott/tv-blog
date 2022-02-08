@@ -18,4 +18,19 @@ router.get('/', (req, res) => {
         })
 });
 
+router.post('/', (req, res) => {
+    //creating a new Tv
+    Tv.create({
+        brand: req.body.brand,
+        price: req.body.price
+    })
+        .then(dbTvData => {
+            res.json(dbTvData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        })
+});
+
 module.exports = router;
