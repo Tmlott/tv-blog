@@ -1,3 +1,9 @@
 const Tv = require('./Tv');
+const Review = require('./Review');
 
-module.exports = { Tv };
+// TODO
+// Need TV and Review Assocations
+// TV hasMany Review
+// Review belongTo TV
+
+module.exports = { Tv, Review };

@@ -1,28 +1,25 @@
 const { Model, DataTypes } = require('sequelize');
-const { databaseVersion } = require('../config/connection');
 const sequelize = require('../config/connection');
 
-//creating tv model
-class Tv extends Model { }
+class Review extends Model {}
 
-//create fields/columns for Tv model
-Tv.init(
+Review.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             primaryKey: true,
+            allowNull: false,
             autoIncrement: true
         },
-        brand: {
+        comment: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        price: {
-            type: DataTypes.DECIMAL(10, 2),
-            allowNull: false,
-            validate: {
-                isDecimal: true
+        tv_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'tv',
+                key: 'id'
             }
         }
     },
@@ -31,8 +28,8 @@ Tv.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'tv',
+        modelName: 'review'
     }
-);
+)
 
-module.exports = Tv;
+module.exports = Review;
