@@ -9,4 +9,10 @@ router.get('*', (req,res) => {
     res.render('homepage');
 })
 
+// TODO
+// Router Login
+// router.get('/login', (req, res) => {  })
+// 
+
+
 module.exports = router;

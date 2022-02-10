@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const { databaseVersion } = require('../config/connection');
 const sequelize = require('../config/connection');
 
 //creating tv model

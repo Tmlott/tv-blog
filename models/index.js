@@ -6,4 +6,10 @@ const Review = require('./Review');
 // TV hasMany Review
 // Review belongTo TV
 
+// TODO 
+// User HasMany Review 
+// Review belong to user
+// Tv hasmany Review
+// review belongto tv?
+
 module.exports = { Tv, Review };
