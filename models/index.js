@@ -12,4 +12,6 @@ const Review = require('./Review');
 // Tv hasmany Review
 // review belongto tv?
 
+
+
 module.exports = { Tv, Review };
