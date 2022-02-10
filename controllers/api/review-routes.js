@@ -18,4 +18,18 @@ router.get('/', (req, res) => {
         })
 });
 
+router.post('/', (req, res) => {
+    Review.create({
+        comment: req.body.comment,
+        tv_id: req.body.tv_id
+    })
+        .then(dbReviewData => {
+            res.json(dbReviewData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err)
+        })
+});
+
 module.exports = router;
