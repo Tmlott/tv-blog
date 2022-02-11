@@ -5,8 +5,6 @@ const router = require('express').Router();
 // Import ==> like this: const { TV, Review, User } = require('../models')
 
 router.get('/', (req, res) => {
-    // TODO
-    // Someone can uncomment this and then (git add .) => (git commit -m "") => git push
     //  Tv.findAll({
     //     attributes: [
     //         'id',
@@ -22,9 +20,9 @@ router.get('/', (req, res) => {
     // })
     //     .then(tvData => {
     //         res.render('homepage', { tvData });
-        })
-    // res.render('homepage');
-// });
+    //     })
+    res.render('homepage');
+});
 
 // bad url path redirect to homepage
 router.get('*', (req,res) => {
@@ -35,7 +33,6 @@ router.get('*', (req,res) => {
 // TODO
 // Router Login
 // router.get('/login', (req, res) => {  })
-// 
 router.get('/login', (req, res) => {
     res.render('login');
 })

@@ -1,6 +1,6 @@
 const Tv = require('./Tv');
 const Review = require('./Review');
-const { associations } = require('./Tv');
+const User = require('./User');
 
 // TODO
 // Need TV and Review Assocations

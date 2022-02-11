@@ -6,6 +6,7 @@ class User extends Model { }
 User.init(
     {
         id: {
+            primaryKey: true,
             type: DataTypes.INTEGER
         },
         username: {
@@ -47,4 +48,6 @@ User.init(
         underscored: true,
         modelName: 'user'
     }
-);
+)
+
+module.exports = User;

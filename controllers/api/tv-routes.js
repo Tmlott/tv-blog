@@ -38,26 +38,26 @@ router.post('/', (req, res) => {
 });
 
 // TODO uncomment this section and try to split into multipel commits
-// router.get('/tv/:id', (req, params) => {
-//     Tv.findOne({
-//         where: {
-//             id: req.params.id
-//         },
+router.get('/tv/:id', (req, params) => {
+    Tv.findOne({
+        where: {
+            id: req.params.id
+        },
 
-//     })
-//         .then(tvData => {
-//             if (!tvData) {
-//                 res.status(400).json({ message: "No Tv found with this id" });
-//                 return;
-//             }
-//             const tv = tvData.get({ plain: true });
-//             res.render('single-tv', { tvData })
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// })
+    })
+        .then(tvData => {
+            if (!tvData) {
+                res.status(400).json({ message: "No Tv found with this id" });
+                return;
+            }
+            const tv = tvData.get({ plain: true });
+            res.render('single-tv', { tvData })
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+})
 
 // UPDATE tv by id '/:id', router.put('/:id', (req, params) => {  })
 
