@@ -20,12 +20,12 @@ router.get('/', (req, res) => {
     // })
     //     .then(tvData => {
     //         res.render('homepage', { tvData });
-    //     })
-    res.render('homepage');
-});
+})
+// res.render('homepage');
+// });
 
 // bad url path redirect to homepage
-router.get('*', (req,res) => {
+router.get('*', (req, res) => {
 
     res.render('homepage');
 })

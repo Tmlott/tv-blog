@@ -1,6 +1,6 @@
 const Tv = require('./Tv');
 const Review = require('./Review');
-const User = require('./User');
+const User = require('./User')
 
 // TODO
 // Need TV and Review Assocations
@@ -22,14 +22,14 @@ Review.belongsTo(Tv, {
 // Tv hasmany Review
 // review belongto tv?
 
-User.hasMany(Review, {
-    foreignKey: 'id'
-});
+// User.hasMany(Review, {
+//     foreignKey: 'id'
+// });
 
-Review.belongsTo(User, {
-    foreignKey: 'id',
-    onDelete: 'SET NULL'
-});
+// Review.belongsTo(User, {
+//     foreignKey: 'id',
+//     onDelete: 'SET NULL'
+// });
 
 
-module.exports = { Tv, Review };
+module.exports = { Tv, Review, User };

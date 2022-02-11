@@ -1,8 +1,5 @@
 const router = require('express').Router();
-const req = require('express/lib/request');
-const res = require('express/lib/response');
-const { rulesToMonitor } = require('nodemon/lib/monitor/match');
-const { Tv } = require('../../models');
+const { Tv, User, Review } = require('../../models');
 
 router.get('/', (req, res) => {
     Tv.findAll({
