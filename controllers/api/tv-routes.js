@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'brand',
-            'price'
+            'price',
+            'user_id'
         ]
     })
         .then(dbTvData => {
