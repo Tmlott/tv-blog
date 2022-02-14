@@ -22,14 +22,14 @@ Review.belongsTo(Tv, {
 // Tv hasmany Review
 // review belongto tv?
 
-// User.hasMany(Review, {
-//     foreignKey: 'id'
-// });
+User.hasMany(Review, {
+    foreignKey: 'id'
+});
 
-// Review.belongsTo(User, {
-//     foreignKey: 'id',
-//     onDelete: 'SET NULL'
-// });
+Review.belongsTo(User, {
+    foreignKey: 'id',
+    onDelete: 'SET NULL'
+});
 
 
 module.exports = { Tv, Review, User };
