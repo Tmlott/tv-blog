@@ -50,23 +50,36 @@ router.post('/', (req, res) => {
         })
 });
 
-router.get('/:username', (req, res) => {
+router.post('/login', (req, res) => {
+    // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+    console.log(req.body)
     User.findOne({
-        attributes: { exclude: ['password'] },
         where: {
-            username: req.params.username
+            username: req.body.username
         }
-    })
-        .then(userData => {
-            if (!userData) {
-                res.status(404).json({ message: "No user found" });
-                return;
-            }
-            res.json(userData)
-        })
-        .catch(err => res.status(500).json(err));
-});
+    }).then(dbUserData => {
+        console.log(dbUserData)
+        if (!dbUserData) {
+            res.status(400).json({ message: 'No user with that username address!' });
+            return;
+        }
 
-router.delete('/:username')
+        const validPassword = dbUserData.checkPassword(req.body.password);
+
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+
+        req.session.save(() => {
+            //declare session variables
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+    });
+});
 
 module.exports = router;
