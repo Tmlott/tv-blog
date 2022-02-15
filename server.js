@@ -7,7 +7,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // 
+const session = require('express-session');
+const sequelizeStore = require('connect-session-sequelize')(session.Store);
 
+const sess = {
+
+}
 // ------------------------------------------ Express-handlebars config ----------- Start
 const exphbs = require('express-handlebars');
 const { beforeDestroy } = require('./models/Tv');
@@ -18,6 +23,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 

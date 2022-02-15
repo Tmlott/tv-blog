@@ -45,4 +45,23 @@ router.post('/', (req, res) => {
         })
 });
 
+router.get('/:username', (req, res) => {
+    User.findOne({
+        attributes: { exclude: ['password']},
+        where: {
+            username: req.params.username
+        }
+    })
+        .then(userData => {
+            if(!userData) {
+                res.status(404).json({ message: "No user found"});
+                return;
+            }
+            res.json(userData)
+        })
+        .catch(err => res.status(500).json(err));
+});
+
+router.delete('/:username')
+
 module.exports = router;
