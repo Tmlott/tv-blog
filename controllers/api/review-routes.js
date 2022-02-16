@@ -1,12 +1,20 @@
 const router = require('express').Router();
-const { Review } = require('../../models');
+const { Review, User } = require('../../models');
 
 router.get('/', (req, res) => {
     Review.findAll({
         attributes: [
             'id',
             'comment',
-            'tv_id'
+            'tv_id',
+            'user_id'
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+
+            }
         ]
     })
         .then(dbReviewData => {
@@ -19,9 +27,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+    console.log(req.body)
     Review.create({
         comment: req.body.comment,
-        tv_id: req.body.tv_id
+        tv_id: req.body.tv_id,
+        user_id: req.session.user_id
     })
         .then(dbReviewData => {
             res.json(dbReviewData)

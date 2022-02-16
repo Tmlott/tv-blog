@@ -1,18 +1,18 @@
 async function commentFormHandler(event) {
     event.preventDefault();
 
-    const comment_text = document.querySelector('textarea[name="comment-body"]').value.trim();
+    const comment = document.querySelector('textarea[name="comment-body"]').value.trim();
 
-    const review_id = window.location.toString().split('/')[
+    const tv_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
-    console.log(comment_text, review_id);
-    if (comment_text) {
+    console.log(comment);
+    if (comment) {
         const response = await fetch('/api/review', {
             method: 'POST',
             body: JSON.stringify({
-                review_id,
-                comment_text
+                tv_id,
+                comment
             }),
             headers: {
                 'Content-Type': 'application/json'
