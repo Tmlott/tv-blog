@@ -37,20 +37,3 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
-
-// Payments
-// id 
-// card_number: {
-//     integer
-// }
-// name
-// expirationdate
-// user_id
-
-// User => Bert {
-//     money: 1000
-// }
-
-// TV cost = 100
-
-// Bert.moneY - 100
