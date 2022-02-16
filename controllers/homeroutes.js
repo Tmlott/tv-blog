@@ -1,4 +1,4 @@
-const { Tv, User } = require("../models");
+const { Tv, User, Review } = require("../models");
 
 const router = require("express").Router();
 
@@ -14,6 +14,14 @@ router.get("/login", (req, res) => {
 router.get("/signup", (req, res) => {
   res.render("signup");
 });
+
+router.get('/post/:id', (req, res) => {
+  res.render('single-post');
+
+});
+
+module.exports = router;
+
 // bad url path redirect to homepage
 router.get("*", (req, res) => {
   res.render("homepage");
