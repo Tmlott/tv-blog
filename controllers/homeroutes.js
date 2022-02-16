@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   })
     .then(query => {
       console.log(query)
-      res.render('homepage',  query)
+      res.render('homepage', query)
     })
     .catch(err => {
       res.status(500).json(err);
@@ -31,6 +31,13 @@ router.get("/login", (req, res) => {
 router.get("/signup", (req, res) => {
   res.render("signup");
 });
+
+router.get('/post/:id', (req, res) => {
+  res.render('single-post');
+
+});
+
+module.exports = router;
 
 // bad url path redirect to homepage
 // router.get("*", (req, res) => {
