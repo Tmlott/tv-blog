@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   })
     .then(query => {
       console.log(query)
-      res.render('homepage', query)
+      res.render('homepage', {loggedIn: req.session.loggedIn, query})
     })
     .catch(err => {
       res.status(500).json(err);
