@@ -22,6 +22,5 @@
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.15",
     "sequelize": "^6.3.5"
-  },
-  "homepage": "https://github.com/ShinichiM/tv-blog#readme"
+  }
 }
