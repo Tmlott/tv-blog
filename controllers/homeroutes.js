@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   })
     .then(query => {
       console.log(query)
-      res.render('homepage', {loggedIn: req.session.loggedIn, query})
+      res.render('homepage', { loggedIn: req.session.loggedIn, query })
     })
     .catch(err => {
       res.status(500).json(err);
@@ -20,7 +20,30 @@ router.get("/", (req, res) => {
 });
 
 router.get('/tv', (req, res) => {
-  res.render('TVdump');
+  Tv.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'brand',
+      'price',
+      'user_id'
+    ],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbTvData => {
+      const tvs = dbTvData.map(tv => tv.get({ plain: true }));
+      res.render('TVdump', { tvs, loggedIn: true });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 })
 
 // Router Login

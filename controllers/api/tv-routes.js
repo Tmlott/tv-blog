@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
             'id',
             'brand',
             'price',
+            'image_url',
             'user_id'
         ]
     })
