@@ -4,47 +4,53 @@ const router = require("express").Router();
 
 router.get("/", (req, res) => {
   Review.findAll({
-    attributes: ['comment'],
-    include: [{
-      model: Tv,
-      attributes: ['brand', 'price']
-    }]
+    attributes: ["comment"],
+    include: [
+      {
+        model: Tv,
+        attributes: ["brand", "price"],
+      },
+    ],
   })
-    .then(query => {
-      console.log(query)
-      res.render('homepage', { loggedIn: req.session.loggedIn, query })
+    .then((query) => {
+      const serializedQuery = query.map((query) => query.get({ plain: true }));
+      console.log(
+        "-------------------------------------",
+        serializedQuery,
+        "-------------------------------------"
+      );
+      res.render("homepage", {
+        loggedIn: req.session.loggedIn,
+        serializedQuery,
+      });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json(err);
-    })
+    });
 });
 
-router.get('/tv', (req, res) => {
+router.get("/tv", (req, res) => {
   Tv.findAll({
     where: {
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
     },
-    attributes: [
-      'brand',
-      'price',
-      'user_id'
-    ],
+    attributes: ["brand", "price", "user_id"],
     include: [
       {
         model: User,
-        attributes: ['username']
-      }
-    ]
+        attributes: ["username"],
+      },
+    ],
   })
-    .then(dbTvData => {
-      const tvs = dbTvData.map(tv => tv.get({ plain: true }));
-      res.render('TVdump', { tvs, loggedIn: true });
+    .then((dbTvData) => {
+      const tvs = dbTvData.map((tv) => tv.get({ plain: true }));
+      res.render("TVdump", { tvs, loggedIn: true });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
-})
+});
 
 // Router Login
 router.get("/login", (req, res) => {
@@ -55,9 +61,8 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get('/post/:id', (req, res) => {
-  res.render('single-post');
-
+router.get("/post/:id", (req, res) => {
+  res.render("single-post");
 });
 
 module.exports = router;
