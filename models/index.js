@@ -33,6 +33,10 @@ Review.belongsTo(User, {
 
 User.hasMany(Tv, {
     foreignKey: 'user_id'
-})
+});
+
+Tv.belongsTo(User, {
+    foreignKey: 'user_id'
+});
 
 module.exports = { Tv, Review, User };

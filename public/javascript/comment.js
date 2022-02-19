@@ -19,6 +19,7 @@ async function commentFormHandler(event) {
         brand,
         price,
         url,
+        user_id: sessionStorage.getItem("SessionName")
       }),
       headers: {
         "Content-Type": "application/json",

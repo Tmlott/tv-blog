@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
     ],
   })
     .then((query) => {
+      console.log(User.username)
       const serializedQuery = query.map((query) => query.get({ plain: true }));
       console.log(
         "-------------------------------------",
