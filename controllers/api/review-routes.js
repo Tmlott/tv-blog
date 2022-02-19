@@ -14,6 +14,10 @@ router.get('/', (req, res) => {
                 model: User,
                 attributes: ['username']
 
+            },
+            {
+                model: Tv,
+                attributes: 'image_url'
             }
         ]
     })

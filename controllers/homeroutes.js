@@ -8,8 +8,12 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Tv,
-        attributes: ["brand", "price"],
+        attributes: ["brand", "price", "image_url"],
       },
+      {
+        model: User,
+        attributes: ['username']
+      }
     ],
   })
     .then((query) => {
