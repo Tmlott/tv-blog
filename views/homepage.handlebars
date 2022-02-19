@@ -1,9 +1,9 @@
 {{#each serializedQuery}}
   <div class="w-50 mx-auto mt-3 card-body border">
     <blockquote class="blockquote mb-0">
-      <cite title="tv-brand">{{this.tv.brand}}</cite>
+      <cite title="tv-brand">{{this.brand}}</cite>
       <div class="d-flex flex-row justify-content-between">
-        <p>{{this.tv.price}}</p>
+        <p>{{this.price}}</p>
         <img
           data-ils="2"
           jsaction="rcuQ6b:trigger.M8vzZb;"
@@ -11,11 +11,11 @@
           alt=""
           width="144"
           height="144"
-          src=""
+          src="{{this.image_url}}"
         />
       </div>
     </blockquote>
-    <footer class="blockquote-footer">TVGuru</footer>
+    <footer class="blockquote-footer">{{this.user.username}}</footer>
     <button type="button" class="btn btn-sm">
       <svg
         xmlns="http://www.w3.org/2000/svg"

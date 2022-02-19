@@ -3,13 +3,13 @@ const { Tv, User, Review } = require("../models");
 const router = require("express").Router();
 
 router.get("/", (req, res) => {
-  Review.findAll({
-    attributes: ["comment"],
+  Tv.findAll({
+    attributes: ["brand", "price", "image_url", "user_id"],
     include: [
       {
-        model: Tv,
-        attributes: ["brand", "price"],
-      },
+        model: User,
+        attributes: ["username"],
+      }
     ],
   })
     .then((query) => {

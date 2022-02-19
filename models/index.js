@@ -31,5 +31,8 @@ Review.belongsTo(User, {
     onDelete: 'SET NULL'
 });
 
+User.hasMany(Tv, {
+    foreignKey: 'user_id'
+})
 
 module.exports = { Tv, Review, User };
