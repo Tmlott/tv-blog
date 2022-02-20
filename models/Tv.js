@@ -24,6 +24,10 @@ Tv.init(
                 isDecimal: true
             }
         },
+        comment: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         image_url: {
             type: DataTypes.STRING,
             allowNull: false,

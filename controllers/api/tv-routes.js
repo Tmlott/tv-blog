@@ -3,7 +3,7 @@ const { Tv, User, Review } = require("../../models");
 
 router.get("/", (req, res) => {
     Tv.findAll({
-        attributes: ["id", "brand", "price", "image_url", "user_id"],
+        attributes: ["id", "brand", "price", "comment", "image_url", "user_id"],
     }).then((dbTvData) => {
         if (dbTvData) {
             res.json(dbTvData);
@@ -19,6 +19,7 @@ router.post("/", (req, res) => {
     Tv.create({
         brand: req.body.brand,
         price: req.body.price,
+        comment: req.body.comment,
         image_url: req.body.url,
         user_id: req.session.user_id
     })

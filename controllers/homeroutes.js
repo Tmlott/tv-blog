@@ -4,7 +4,7 @@ const router = require("express").Router();
 
 router.get("/", (req, res) => {
   Tv.findAll({
-    attributes: ["brand", "price", "image_url", "user_id"],
+    attributes: ["brand", "price", "comment", "image_url", "user_id"],
     include: [
       {
         model: User,
@@ -35,7 +35,7 @@ router.get("/tv", (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
-    attributes: ["brand", "price", "user_id"],
+    attributes: ["brand", "price", "comment", "user_id"],
     include: [
       {
         model: User,
