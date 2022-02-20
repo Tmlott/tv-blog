@@ -63,7 +63,7 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/post", (req, res) => {
-  res.render("single-post");
+  res.render("single-post", { loggedIn: req.session.loggedIn });
 });
 
 module.exports = router;

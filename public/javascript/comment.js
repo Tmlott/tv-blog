@@ -1,6 +1,6 @@
 async function commentFormHandler(event) {
   event.preventDefault();
-
+  console.log(sessionStorage.getItem("SessionName"));
   const brand = document
     .querySelector('textarea[name="brand-body"]')
     .value.trim();
